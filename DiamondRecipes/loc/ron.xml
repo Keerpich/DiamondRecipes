@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ron>
+  <SAVE>Salveaza</SAVE>
+  <SAVE_TO>Salveaza ca...</SAVE_TO>
+  <SAVE_IN_CLOUD>Salveaza in cloud</SAVE_IN_CLOUD>
+  <SEARCH_FOR>Cauta...</SEARCH_FOR>
+  <OPTIONS>Setari</OPTIONS>
+  <RECIPES>Retete</RECIPES>
+  <ADD_RECIPE>Adauga Reteta</ADD_RECIPE>
+  <IMPORT_RECIPE>Importa Reteta</IMPORT_RECIPE>
+  <DELETE_RECIPE>Sterge Reteta</DELETE_RECIPE>
+  <EDIT_RECIPE>Modifica Reteta</EDIT_RECIPE>
+  <FILE>Fisier</FILE>
+  <OPEN>Deschide</OPEN>
+</ron>

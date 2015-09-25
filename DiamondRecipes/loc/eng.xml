@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<eng>
+  <SAVE>Save</SAVE>
+  <SAVE_TO>Save as...</SAVE_TO>
+  <SAVE_IN_CLOUD>Save in cloud</SAVE_IN_CLOUD>
+  <SEARCH_FOR>Search for...</SEARCH_FOR>
+  <OPTIONS>Options</OPTIONS>
+  <RECIPES>Recipes</RECIPES>
+  <ADD_RECIPE>Add Recipe</ADD_RECIPE>
+  <IMPORT_RECIPE>Import Recipe</IMPORT_RECIPE>
+  <DELETE_RECIPE>Delete Recipe</DELETE_RECIPE>
+  <EDIT_RECIPE>Edit Recipe</EDIT_RECIPE>
+  <FILE>File</FILE>
+  <OPEN>Open</OPEN>
+</eng>
