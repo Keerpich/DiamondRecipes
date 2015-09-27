@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DiamondRecipes
 {
-    class Recipe
+    public class Recipe
     {
         public string Category
         {

@@ -42,8 +42,8 @@
                         <MenuItem Header="ADD_RECIPE" Click="AddRecipeClick" Initialized="LocalizeText" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
                         <MenuItem Header="IMPORT_RECIPE" Initialized="LocalizeText" Click="ImportRecipeClick"
                           Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
-                        <MenuItem Header="EDIT_RECIPE" Initialized="LocalizeText" IsEnabled="False" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
-                        <MenuItem Header="DELETE_RECIPE" Initialized="LocalizeText" IsEnabled="False" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+                        <MenuItem Header="EDIT_RECIPE" Name="EditRecipeButton" Click="EditRecipeClick" Initialized="LocalizeText" IsEnabled="False" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+                        <MenuItem Header="DELETE_RECIPE" Name="DeleteRecipeButton" Click="DeleteRecipeButton_Click" Initialized="LocalizeText" IsEnabled="False" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
                     </MenuItem>
                 </Menu>
                 <Button Content="OPTIONS" Initialized="LocalizeText" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>

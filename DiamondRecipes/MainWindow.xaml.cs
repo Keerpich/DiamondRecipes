@@ -23,8 +23,9 @@ namespace DiamondRecipes
     public partial class MainWindow : Window
     {
         private string current_path = "";
-        //private List<Tuple<string, List<Recipe>>> allRecipes = null;
         ObservableCollection<Recipe> allRecipes = null;
+        public Recipe selectedRecipe = null;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -59,16 +60,29 @@ namespace DiamondRecipes
 
         }
 
+        public void RefreshListBox()
+        {
+            ListBox lbRecipeList = this.FindName("RecipeList") as ListBox;
+            lbRecipeList.BeginInit();
+            lbRecipeList.EndInit();
+            lbRecipeList.InvalidateVisual();
+
+            TextBox tb = this.FindName("RecipeDescriptionTextBox") as TextBox;
+            tb.Clear();
+
+        }
+
         private void PopulateContentList()
         {
             ListBox lbRecipeList = this.FindName("RecipeList") as ListBox;
-            string localizedCategory = "Category";//LocalizationManager.Instance.getStringForKey("CATEGORY");
+            
+
+
             ICollectionView view = CollectionViewSource.GetDefaultView(allRecipes);
-            view.GroupDescriptions.Add(new PropertyGroupDescription(localizedCategory));
-            view.SortDescriptions.Add(new SortDescription(localizedCategory, ListSortDirection.Ascending));
+            view.GroupDescriptions.Add(new PropertyGroupDescription("Category"));
+            view.SortDescriptions.Add(new SortDescription("Category", ListSortDirection.Ascending));
             view.SortDescriptions.Add(new SortDescription("Title", ListSortDirection.Ascending));
             lbRecipeList.ItemsSource = view;
-            //lbRecipeList.ItemSource = view;
         }
 
         private void RecipeSelectedEventHandler(object sender, RoutedEventArgs e)
@@ -96,6 +110,15 @@ namespace DiamondRecipes
             tb.Text += System.Environment.NewLine;
             tb.Text += LocalizationManager.Instance.getStringForKey("WAY_TO_COOK") + ":" + Environment.NewLine;
             tb.Text += rep.WayToCook;
+
+            //activate edit and delete buttons
+            MenuItem emi = this.FindName("EditRecipeButton") as MenuItem;
+            MenuItem dmi = this.FindName("DeleteRecipeButton") as MenuItem;
+
+            emi.IsEnabled = true;
+            dmi.IsEnabled = true;
+
+            selectedRecipe = rep;
         }
 
         private void SaveToClick(object sender, RoutedEventArgs e)
@@ -127,7 +150,37 @@ namespace DiamondRecipes
 
         private void AddRecipeClick(object sender, RoutedEventArgs e)
         {
+            EditRecipeWindow editWin = new EditRecipeWindow();
+            (editWin.FindName("titleBox") as TextBox).Text = "";
+            (editWin.FindName("authorBox") as TextBox).Text = "";
+            (editWin.FindName("categoryBox") as TextBox).Text = "";
+            (editWin.FindName("timeToCookBox") as TextBox).Text = "";
+            (editWin.FindName("ingredientsBox") as TextBox).Text = "";
+            (editWin.FindName("wayToCookBox") as TextBox).Text = "";
 
+            editWin.parentWindow = this;
+            editWin.isNew = true;
+            editWin.selectedRecipe = null;//selectedRecipe;
+
+            editWin.Show();
+
+        }
+
+        private void EditRecipeClick(object sender, RoutedEventArgs e)
+        {
+            EditRecipeWindow editWin = new EditRecipeWindow();
+            (editWin.FindName("titleBox") as TextBox).Text = selectedRecipe.Title;
+            (editWin.FindName("authorBox") as TextBox).Text = selectedRecipe.Author;
+            (editWin.FindName("categoryBox") as TextBox).Text = selectedRecipe.Category;
+            (editWin.FindName("timeToCookBox") as TextBox).Text = selectedRecipe.TimeToCook;
+            (editWin.FindName("ingredientsBox") as TextBox).Text = selectedRecipe.Ingredients;
+            (editWin.FindName("wayToCookBox") as TextBox).Text = selectedRecipe.WayToCook;
+
+            editWin.parentWindow = this;
+            editWin.isNew = false;
+            editWin.selectedRecipe = selectedRecipe;
+
+            editWin.Show();
         }
 
         private void ImportRecipeClick(object sender, RoutedEventArgs e)
@@ -145,11 +198,21 @@ namespace DiamondRecipes
                 string[] filenames = browser.FileNames;
                 foreach (string filename in filenames)
                 {
+                    if(filename.EndsWith(".xml"))
+                    {
+                        var importList = Utilities.getRecipes(filename);
+                        //allRecipes = Utilities.concatRecipeLists(allRecipes, importList);
+                        foreach (Recipe r in importList)
+                            allRecipes.Add(r);
+                    }
                     //if(filename.EndsWith(".doc") || filename.EndsWith(".docx"))
                       //Parse doc file and get everything you can from it with a ???Python??? script
                     //else if(filename.EndsWith(".xml")
                         //see if it is a RecipeBook xml and then parse and merge it 
                 }
+
+
+                RefreshListBox();
 
             }
         }
@@ -168,12 +231,23 @@ namespace DiamondRecipes
             {
                 current_path = browser.FileName;
                 //parse xml file
-                //allRecipes = Utilities.Instance.getRecipes(current_path);
                 allRecipes = Utilities.getRecipes(current_path);
 
                 PopulateContentList();
             }
         }
+
+        private void DeleteRecipeButton_Click(object sender, RoutedEventArgs e)
+        {
+            allRecipes.Remove(selectedRecipe);
+            RefreshListBox();
+        }
         #endregion
+
+        public void AddNewRecipe(Recipe recipe)
+        {
+            allRecipes.Add(recipe);
+        }
+        
     }
 }

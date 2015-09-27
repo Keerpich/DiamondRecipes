@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Collections.ObjectModel;
 
 namespace DiamondRecipes
 {
@@ -109,6 +110,17 @@ namespace DiamondRecipes
             writer.WriteEndDocument();
 
             writer.Close();
+        }
+        public static ObservableCollection<Recipe> concatRecipeLists(ObservableCollection<Recipe> l1, ObservableCollection<Recipe> l2)
+        {
+            ObservableCollection<Recipe> result = new ObservableCollection<Recipe>();
+
+            foreach (Recipe r in l1)
+                result.Add(r);
+            foreach (Recipe r in l2)
+                result.Add(r);
+
+            return result;
         }
         #endregion
     }
