@@ -1,0 +1,48 @@
+MainWindow 
+	Top Bar Menu
+		Recipes
+			Add Recipe
+				Add From Word
+					*.doc/*.docx file browser
+				Add By Hand
+					RecipeAdd Window
+						Category(dropdown) - Add new category
+						Title
+						Time needed (optional)
+						Ingredients
+						Way to cook
+				Import From Another DiamondRecipe file
+					*.xml file browser
+			Edit Recipe
+			Delete Recipe (?? aici sau in reteta)
+		Options
+			Visually impaired feature
+			Search criterias
+			About
+			
+		Search text input (it will first display title matches and then context matches unless specified otherwise)
+		
+	Cuprins (colapsable)
+		Categories (expandable)
+			Recipes
+	
+	Main Space
+		Selected recipe or "No Recipe Selected" text
+		
+--------------------------------------
+
+Localizable (EN + RO)
+	Each component will check for its name in a loc .xml after initialisation (or before somehow)
+	
+Import from other types of files
+	From doc and xml: 
+		Import the xml in a nice and clean way
+		Python script that will make a temp *.xml file from the doc and the import the doc
+	By Hand:
+		modify current *.xml save to contain the new recipe
+		
+Dump
+	Just make a copy of the main *.xml file and place it wherever the user wants
+
+Safety	
+	Try to use OneDrive or a cloud save somehow
