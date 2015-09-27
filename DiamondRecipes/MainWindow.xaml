@@ -18,6 +18,9 @@
                 </Setter.Value>
             </Setter>
         </Style>
+            <Style TargetType="{x:Type ListBoxItem}">
+            <EventSetter Event="Selected"  Handler="RecipeSelectedEventHandler" />
+        </Style>
     </Window.Resources>
     <Grid x:Name="DiamondRecipes">
         <Grid.ColumnDefinitions>
@@ -48,18 +51,20 @@
             </ToolBar>
 
         </StackPanel>
-        <DockPanel>
-            <ListBox DockPanel.Dock="Left" Width="150" Margin="0,30,0,0" Name="RecipeList">
+        <DockPanel LastChildFill="True" HorizontalAlignment="Stretch">
+            <ListBox DockPanel.Dock="Left" Width="150" Margin="0,30,0,0" Name="RecipeList" SelectionMode="Single">
                 <ListBox.GroupStyle>
                     <GroupStyle ContainerStyle="{StaticResource ContainerStyle}"/>
                 </ListBox.GroupStyle>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Title}" />
+                        <TextBlock Text="{Binding Title}"/>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <TextBox DockPanel.Dock="Left" x:Name="textBox" TextWrapping="Wrap" Margin="0,30,0,0" AcceptsReturn="True" IsReadOnly="True" RenderTransformOrigin="0.5,0.5" Width="644">
+
+            <Canvas />
+            <TextBox DockPanel.Dock="Left" x:Name="RecipeDescriptionTextBox" TextWrapping="Wrap" Margin="0,30,0,0" AcceptsReturn="True" IsReadOnly="True" RenderTransformOrigin="0.5,0.5">
                 <TextBox.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -69,7 +74,6 @@
                     </TransformGroup>
                 </TextBox.RenderTransform>
             </TextBox>
-            <Canvas />
         </DockPanel>
     </Grid>
 </Window>

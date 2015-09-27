@@ -71,6 +71,33 @@ namespace DiamondRecipes
             //lbRecipeList.ItemSource = view;
         }
 
+        private void RecipeSelectedEventHandler(object sender, RoutedEventArgs e)
+        {
+            ListBoxItem lib = sender as ListBoxItem;
+            Recipe rep = lib.Content as Recipe;
+            TextBox tb = this.FindName("RecipeDescriptionTextBox") as TextBox;
+            tb.Text = rep.Title;
+
+            tb.Text += " " + LocalizationManager.Instance.getStringForKey("BY") + " " + rep.Author;
+
+            tb.Text += System.Environment.NewLine;
+            tb.Text += System.Environment.NewLine;
+
+            tb.Text += LocalizationManager.Instance.getStringForKey("TIME_TO_COOK") + ": ";
+            tb.Text += rep.TimeToCook;
+
+            tb.Text += System.Environment.NewLine;
+            tb.Text += System.Environment.NewLine;
+
+            tb.Text += LocalizationManager.Instance.getStringForKey("INGREDIENTS") + ":" + System.Environment.NewLine;
+            tb.Text += rep.Ingredients;
+
+            tb.Text += System.Environment.NewLine;
+            tb.Text += System.Environment.NewLine;
+            tb.Text += LocalizationManager.Instance.getStringForKey("WAY_TO_COOK") + ":" + Environment.NewLine;
+            tb.Text += rep.WayToCook;
+        }
+
         private void SaveToClick(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.SaveFileDialog browser = new Microsoft.Win32.SaveFileDialog();

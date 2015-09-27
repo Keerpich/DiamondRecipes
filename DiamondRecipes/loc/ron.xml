@@ -12,4 +12,8 @@
   <EDIT_RECIPE>Modifica Reteta</EDIT_RECIPE>
   <FILE>Fisier</FILE>
   <OPEN>Deschide</OPEN>
+  <BY>de</BY>
+  <TIME_TO_COOK>Timp de preparare</TIME_TO_COOK>
+  <INGREDIENTS>Ingrediente</INGREDIENTS>
+  <WAY_TO_COOK>Mod de preparare</WAY_TO_COOK>
 </ron>
