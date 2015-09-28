@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ron>
+  <NEW_RECIPE_BOOK>Carte de retete noua</NEW_RECIPE_BOOK>
   <SAVE>Salveaza</SAVE>
   <SAVE_TO>Salveaza ca...</SAVE_TO>
   <SAVE_IN_CLOUD>Salveaza in cloud</SAVE_IN_CLOUD>

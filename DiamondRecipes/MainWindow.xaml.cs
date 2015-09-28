@@ -29,6 +29,8 @@ namespace DiamondRecipes
         public MainWindow()
         {
             InitializeComponent();
+
+            allRecipes = new ObservableCollection<Recipe>();
         }
 
         #region EventHandlers
@@ -234,6 +236,9 @@ namespace DiamondRecipes
                 allRecipes = Utilities.getRecipes(current_path);
 
                 PopulateContentList();
+
+                //set save to enabled
+                (this.FindName("SaveButton") as MenuItem).IsEnabled = true;
             }
         }
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <eng>
+  <NEW_RECIPE_BOOK>New recipe book</NEW_RECIPE_BOOK>
   <SAVE>Save</SAVE>
   <SAVE_TO>Save as...</SAVE_TO>
   <SAVE_IN_CLOUD>Save in cloud</SAVE_IN_CLOUD>

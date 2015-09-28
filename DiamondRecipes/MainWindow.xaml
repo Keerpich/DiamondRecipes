@@ -32,7 +32,7 @@
                     <MenuItem Header="FILE" Initialized="LocalizeText" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
                         <MenuItem Header="OPEN" Initialized="LocalizeText" Click="OpenClick"
                                   Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
-                        <MenuItem Header="SAVE" Initialized="LocalizeText" Click="SaveButtonClick"
+                        <MenuItem Name="SaveButton" Header="SAVE" Initialized="LocalizeText" Click="SaveButtonClick" IsEnabled="False"
                                   Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
                         <MenuItem Header="SAVE_TO" Initialized="LocalizeText" Click="SaveToClick" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
                     </MenuItem>
