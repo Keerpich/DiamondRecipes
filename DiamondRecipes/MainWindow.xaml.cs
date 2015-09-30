@@ -23,6 +23,7 @@ namespace DiamondRecipes
     public partial class MainWindow : Window
     {
         private string current_path = "";
+        private int search_index = 0;
         ObservableCollection<Recipe> allRecipes = null;
         public Recipe selectedRecipe = null;
 
@@ -271,11 +272,35 @@ namespace DiamondRecipes
                 (this.FindName("SaveButton") as MenuItem).IsEnabled = true;
             }
         }
+
+        private void SearchKeyDown(object sender, KeyEventArgs e)
+        {
+            TextBox searchBox = sender as TextBox;
+            if (e.Key == Key.Enter)
+                GoToNextSearch(searchBox.Text);
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            search_index = 0;
+        }
+
         #endregion
 
         public void AddNewRecipe(Recipe recipe)
         {
             allRecipes.Add(recipe);
+        }
+
+        private void GoToNextSearch(string searchString)
+        {
+            ObservableCollection<Recipe> searchedList = Utilities.searchForTitle(allRecipes, searchString);
+
+            ListBox lb = FindName("RecipeList") as ListBox;
+            lb.SelectedItem = searchedList[search_index];
+            search_index++;
+            if (search_index >= searchedList.Count)
+                search_index = 0;
         }
         
     }

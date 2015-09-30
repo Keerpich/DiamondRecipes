@@ -122,6 +122,21 @@ namespace DiamondRecipes
 
             return result;
         }
+        public static ObservableCollection<Recipe> searchForTitle(ObservableCollection<Recipe> list, string searchString)
+        {
+
+            ObservableCollection<Recipe> returnList = new ObservableCollection<Recipe>();
+
+            foreach(Recipe r in list)
+            {
+                if (r.Title.ToLowerInvariant().Contains(searchString.ToLowerInvariant()))
+                {
+                    returnList.Add(r);
+                }
+            }
+
+            return returnList;
+        }
         #endregion
     }
 }

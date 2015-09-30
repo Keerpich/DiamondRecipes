@@ -48,8 +48,8 @@
                         <MenuItem Header="DELETE_RECIPE" Name="DeleteRecipeButton" Click="DeleteRecipeButton_Click" Initialized="LocalizeText" IsEnabled="False" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
                     </MenuItem>
                 </Menu>
-                <Button Content="OPTIONS" Initialized="LocalizeText" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
-                <TextBox Width="200" Text="SEARCH_FOR" Initialized="LocalizeText" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" GotFocus="SearchBoxGotFocus"/>
+                <!--<Button Content="OPTIONS" Initialized="LocalizeText" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>-->
+                <TextBox Width="200" Text="SEARCH_FOR" TextChanged="TextBox_TextChanged" KeyDown="SearchKeyDown" Initialized="LocalizeText" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" GotFocus="SearchBoxGotFocus"/>
             </ToolBar>
 
         </StackPanel>
