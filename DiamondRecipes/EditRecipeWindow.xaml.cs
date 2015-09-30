@@ -58,6 +58,8 @@ namespace DiamondRecipes
             newRep.Ingredients = (FindName("ingredientsBox") as TextBox).Text;
 
             parentWindow.AddNewRecipe(newRep);
+
+            madeChanges();
         }
 
         private void EditThisRecipe()
@@ -68,6 +70,13 @@ namespace DiamondRecipes
             selectedRecipe.TimeToCook = (FindName("timeToCookBox") as TextBox).Text;
             selectedRecipe.WayToCook = (FindName("wayToCookBox") as TextBox).Text;
             selectedRecipe.Ingredients = (FindName("ingredientsBox") as TextBox).Text;
+
+            madeChanges();
+        }
+
+        private void madeChanges()
+        {
+            parentWindow.MadeChanges();
         }
 
         private void label_Initialized(object sender, EventArgs e)

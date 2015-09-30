@@ -26,10 +26,14 @@ namespace DiamondRecipes
         private int search_index = 0;
         ObservableCollection<Recipe> allRecipes = null;
         public Recipe selectedRecipe = null;
+        private string initialTitle = "";
+
+        private bool changesMade = false;
 
         public MainWindow()
         {
             InitializeComponent();
+            initialTitle = Title;
 
             allRecipes = new ObservableCollection<Recipe>();
         }
@@ -138,12 +142,14 @@ namespace DiamondRecipes
 
                 //save all info in this file
                 Utilities.saveRecipes(filename, allRecipes);
+                ChangesSaved();
             }
         }
 
         private void SaveButtonClick(object sender, RoutedEventArgs e)
         {
             Utilities.saveRecipes(current_path, allRecipes);
+            ChangesSaved();
         }
 
         private void SearchBoxGotFocus(object sender, RoutedEventArgs e)
@@ -212,6 +218,8 @@ namespace DiamondRecipes
                       //Parse doc file and get everything you can from it with a ???Python??? script
                     //else if(filename.EndsWith(".xml")
                         //see if it is a RecipeBook xml and then parse and merge it 
+
+                    MadeChanges();
                 }
 
 
@@ -222,6 +230,23 @@ namespace DiamondRecipes
 
         private void OpenClick(object sender, RoutedEventArgs e)
         {
+            if(changesMade)
+            {
+                MessageBoxResult mbr = showSaveWarningBox();
+                
+                switch(mbr)
+                {
+                    case MessageBoxResult.Yes:
+                        SaveButtonClick(null, null);
+                    break;
+                    case MessageBoxResult.No:
+                    break;
+                    case MessageBoxResult.Cancel:
+                    return;
+                    break;
+                }
+            }
+
             Microsoft.Win32.OpenFileDialog browser = new Microsoft.Win32.OpenFileDialog();
             browser.DefaultExt = ".xml";
             browser.Filter = "XML File|*.xml";
@@ -240,6 +265,9 @@ namespace DiamondRecipes
 
                 //set save to enabled
                 (this.FindName("SaveButton") as MenuItem).IsEnabled = true;
+                (this.FindName("SaveToButton") as MenuItem).IsEnabled = true;
+                (this.FindName("AddRecipeButton") as MenuItem).IsEnabled = true;
+                (this.FindName("ImportRecipeButton") as MenuItem).IsEnabled = true;
             }
         }
 
@@ -270,6 +298,11 @@ namespace DiamondRecipes
 
                 //set save to enabled
                 (this.FindName("SaveButton") as MenuItem).IsEnabled = true;
+                (this.FindName("SaveToButton") as MenuItem).IsEnabled = true;
+                (this.FindName("AddRecipeButton") as MenuItem).IsEnabled = true;
+                (this.FindName("ImportRecipeButton") as MenuItem).IsEnabled = true;
+
+                current_path = filename;
             }
         }
 
@@ -301,6 +334,49 @@ namespace DiamondRecipes
             search_index++;
             if (search_index >= searchedList.Count)
                 search_index = 0;
+        }
+
+        public void MadeChanges()
+        {
+            changesMade = true;
+            Title = initialTitle + "*";
+        }
+
+        public void ChangesSaved()
+        {
+            changesMade = false;
+            Title = initialTitle;
+        }
+
+        private MessageBoxResult showSaveWarningBox()
+        {
+            string boxTitle = LocalizationManager.Instance.getStringForKey("SAVE_WARNING");
+            string boxText = LocalizationManager.Instance.getStringForKey("ARE_YOU_SURE");
+
+            MessageBoxButton mbb = MessageBoxButton.YesNoCancel;
+            MessageBoxImage mbi = MessageBoxImage.Warning;
+
+            return MessageBox.Show(boxText, boxTitle, mbb, mbi);
+        }
+
+        private void WindowIsClosing(object sender, CancelEventArgs e)
+        {
+            if (changesMade)
+            {
+                MessageBoxResult mbr = showSaveWarningBox();
+
+                switch (mbr)
+                {
+                    case MessageBoxResult.Yes:
+                        SaveButtonClick(null, null);
+                        break;
+                    case MessageBoxResult.No:
+                        break;
+                    case MessageBoxResult.Cancel:
+                        e.Cancel = true;
+                        break;
+                }
+            }
         }
         
     }
