@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DiamondRecipes"
+        xmlns:p="clr-namespace:DiamondRecipes.Properties"
         mc:Ignorable="d"
         Title="DiamondRecipe" Height="600" Width="800">
     <Window.Resources>
@@ -30,6 +31,7 @@
             <ToolBar>
                 <Menu>
                     <MenuItem Header="FILE" Initialized="LocalizeText" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+                        <MenuItem Header="NEW_RECIPE_BOOK" Initialized="LocalizeText" Click="NewRecipeClick" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
                         <MenuItem Header="OPEN" Initialized="LocalizeText" Click="OpenClick"
                                   Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
                         <MenuItem Name="SaveButton" Header="SAVE" Initialized="LocalizeText" Click="SaveButtonClick" IsEnabled="False"

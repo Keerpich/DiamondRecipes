@@ -8,12 +8,18 @@
         Title="EditRecipeWindow" Height="600" Width="800">
     <Grid>
         <TextBox x:Name="titleBox" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="authorBox" HorizontalAlignment="Left" Height="23" Margin="218,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="authorBox" HorizontalAlignment="Left" Height="23" Margin="252,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="timeToCookBox" HorizontalAlignment="Left" Height="23" Margin="10,58,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="categoryBox" HorizontalAlignment="Left" Height="23" Margin="218,58,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="categoryBox" HorizontalAlignment="Left" Height="23" Margin="252,58,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="button" Content="SAVE" Initialized="button_Initialized" Click="button_Click" HorizontalAlignment="Left" Margin="467,18,0,0" VerticalAlignment="Top" Width="249" Height="63"/>
-        <TextBox x:Name="ingredientsBox" HorizontalAlignment="Left" Margin="10,107,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="452" Width="168" AcceptsReturn="True"/>
-        <TextBox x:Name="wayToCookBox" HorizontalAlignment="Left" Margin="218,107,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="452" Width="498" Focusable="True" AcceptsReturn="True"/>
+        <TextBox x:Name="ingredientsBox" HorizontalAlignment="Left" Margin="10,117,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="452" Width="218" AcceptsReturn="True"/>
+        <TextBox x:Name="wayToCookBox" HorizontalAlignment="Left" Margin="252,117,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="452" Width="498" Focusable="True" AcceptsReturn="True"/>
+        <Label x:Name="label" Content="TITLE" Initialized="label_Initialized" HorizontalAlignment="Left" Margin="140,6,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1" Content="TIME_TO_COOK" Initialized="label_Initialized" HorizontalAlignment="Left" Margin="140,58,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label2" Content="AUTHOR" Initialized="label_Initialized" HorizontalAlignment="Left" Margin="391,6,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label3" Content="CATEGORY" Initialized="label_Initialized" HorizontalAlignment="Left" Margin="391,58,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label4" Content="INGREDIENTS" Initialized="label_Initialized" HorizontalAlignment="Left" Margin="10,86,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.487,0.231"/>
+        <Label x:Name="label5" Content="WAY_TO_COOK" Initialized="label_Initialized" HorizontalAlignment="Left" Margin="252,86,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

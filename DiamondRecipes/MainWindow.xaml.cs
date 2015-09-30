@@ -247,6 +247,30 @@ namespace DiamondRecipes
             allRecipes.Remove(selectedRecipe);
             RefreshListBox();
         }
+
+        private void NewRecipeClick(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.SaveFileDialog browser = new Microsoft.Win32.SaveFileDialog();
+            browser.DefaultExt = ".xml";
+            browser.Filter = "XML File (.xml)|*.xml";
+
+            Nullable<bool> result = browser.ShowDialog();
+
+            if (result == true)
+            {
+                string filename = browser.FileName;
+
+                //save all info in this file
+                Utilities.saveRecipes(filename, new ObservableCollection<Recipe>());
+
+                allRecipes = Utilities.getRecipes(filename);
+
+                PopulateContentList();
+
+                //set save to enabled
+                (this.FindName("SaveButton") as MenuItem).IsEnabled = true;
+            }
+        }
         #endregion
 
         public void AddNewRecipe(Recipe recipe)

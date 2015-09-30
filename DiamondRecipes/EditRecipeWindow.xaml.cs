@@ -69,5 +69,11 @@ namespace DiamondRecipes
             selectedRecipe.WayToCook = (FindName("wayToCookBox") as TextBox).Text;
             selectedRecipe.Ingredients = (FindName("ingredientsBox") as TextBox).Text;
         }
+
+        private void label_Initialized(object sender, EventArgs e)
+        {
+            Label label = sender as Label;
+            label.Content = LocalizationManager.Instance.getStringForKey(label.Content.ToString());
+        }
     }
 }

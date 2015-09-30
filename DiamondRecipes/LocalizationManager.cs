@@ -14,7 +14,7 @@ namespace DiamondRecipes
 
         private LocalizationManager()
         {
-            current_loc = CultureInfo.InstalledUICulture.ThreeLetterISOLanguageName;
+            current_loc = CultureInfo.CurrentUICulture.ThreeLetterISOLanguageName;
             //current_loc = CultureInfo.CurrentCulture.ThreeLetterISOLanguageName;
             if (current_loc != "ron")
                 current_loc = "eng";
