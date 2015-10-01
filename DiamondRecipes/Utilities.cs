@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Collections.ObjectModel;
+using System.Windows.Controls;
+using System.Windows.Documents;
+using System.Windows;
 
 namespace DiamondRecipes
 {
@@ -136,6 +139,23 @@ namespace DiamondRecipes
             }
 
             return returnList;
+        }
+        public static void CreateMyWPFControlReport(TextBox myTextBox)
+        {
+            PrintDialog printDialog = new PrintDialog();
+            if ((bool)printDialog.ShowDialog().GetValueOrDefault())
+            {
+                FlowDocument flowDocument = new FlowDocument();
+                foreach (string line in myTextBox.Text.Split('\n'))
+                {
+                    Paragraph myParagraph = new Paragraph();
+                    myParagraph.Margin = new Thickness(0);
+                    myParagraph.Inlines.Add(new Run(line));
+                    flowDocument.Blocks.Add(myParagraph);
+                }
+                DocumentPaginator paginator = ((IDocumentPaginatorSource)flowDocument).DocumentPaginator;
+                printDialog.PrintDocument(paginator, LocalizationManager.Instance.getStringForKey("RECIPES"));//this.presenter.Title);
+            }
         }
         #endregion
     }

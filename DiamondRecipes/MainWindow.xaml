@@ -37,6 +37,7 @@
                         <MenuItem Name="SaveButton" Header="SAVE" Initialized="LocalizeText" Click="SaveButtonClick" IsEnabled="False"
                                   Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
                         <MenuItem Name="SaveToButton" Header="SAVE_TO" Initialized="LocalizeText" Click="SaveToClick" IsEnabled="False" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+                        <MenuItem Header="PRINT" Click="PrintButton_Click" IsEnabled="False" Name="PrintRecipeButton" Initialized="LocalizeText" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
                     </MenuItem>
                 </Menu>
                 <Menu>

@@ -121,9 +121,11 @@ namespace DiamondRecipes
             //activate edit and delete buttons
             MenuItem emi = this.FindName("EditRecipeButton") as MenuItem;
             MenuItem dmi = this.FindName("DeleteRecipeButton") as MenuItem;
+            MenuItem pmi = this.FindName("PrintRecipeButton") as MenuItem;
 
             emi.IsEnabled = true;
             dmi.IsEnabled = true;
+            pmi.IsEnabled = true;
 
             selectedRecipe = rep;
         }
@@ -316,6 +318,11 @@ namespace DiamondRecipes
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             search_index = 0;
+        }
+
+        private void PrintButton_Click(object sender, RoutedEventArgs e)
+        {
+            Utilities.CreateMyWPFControlReport((FindName("RecipeDescriptionTextBox") as TextBox));
         }
 
         #endregion
